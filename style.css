@@ -57,10 +57,24 @@ header {
 .hero {
     min-height: 85vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     padding: 70px 12%;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .welcome {
@@ -87,6 +101,7 @@ header {
 .description {
     color: #C9A76A;
     margin-bottom: 20px;
+    line-height: 1.7;
 }
 
 .intro {
@@ -94,6 +109,30 @@ header {
     max-width: 600px;
     line-height: 1.8;
     margin-bottom: 35px;
+}
+
+/* PROFILE PHOTO */
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 5px solid #C9A76A;
+    box-shadow: 0 0 35px rgba(201, 167, 106, 0.18);
+    transition: 0.4s;
+}
+
+.hero-image img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 45px rgba(201, 167, 106, 0.3);
 }
 
 .buttons {
@@ -413,6 +452,15 @@ footer {
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .hero-content {
+        gap: 35px;
+    }
+
+    .hero-image img {
+        width: 260px;
+        height: 260px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -432,7 +480,17 @@ footer {
     }
 
     .hero {
-        padding: 70px 7%;
+        padding: 60px 7%;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero-text {
+        align-items: center;
+        text-align: center;
     }
 
     .hero h1 {
@@ -443,7 +501,21 @@ footer {
         font-size: 25px;
     }
 
+    .intro {
+        max-width: 100%;
+    }
+
+    .hero-image {
+        grid-row: 1;
+    }
+
+    .hero-image img {
+        width: 230px;
+        height: 230px;
+    }
+
     .buttons {
+        justify-content: center;
         flex-wrap: wrap;
     }
 
@@ -469,5 +541,25 @@ footer {
 
     .contact-card {
         padding: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero-image img {
+        width: 190px;
+        height: 190px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .buttons .btn {
+        text-align: center;
     }
 }
