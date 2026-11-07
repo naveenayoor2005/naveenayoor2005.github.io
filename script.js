@@ -43,3 +43,55 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+// ======================================
+// TYPING ANIMATION
+// ======================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const typingText = document.getElementById("typing-text");
+
+    if (!typingText) return;
+
+    const roles = [
+        "Data Analyst",
+        "Python Developer",
+        "SQL Enthusiast",
+        "Power BI Developer"
+    ];
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        typingText.textContent = roles[0];
+        return;
+    }
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeEffect() {
+
+        const currentRole = roles[roleIndex];
+
+        typingText.textContent = currentRole.substring(0, charIndex);
+
+        let delay = deleting ? 55 : 100;
+
+        if (!deleting && charIndex === currentRole.length) {
+            deleting = true;
+            delay = 1400;
+        } else if (deleting && charIndex === 0) {
+            deleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            delay = 350;
+        } else {
+            charIndex += deleting ? -1 : 1;
+        }
+
+        setTimeout(typeEffect, delay);
+    }
+
+    typeEffect();
+
+});
