@@ -130,3 +130,46 @@ document.addEventListener("DOMContentLoaded", () => {
     updateScrollProgress();
 
 });
+
+// ======================================
+// BACK TO TOP FUNCTIONALITY
+// ======================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const backToTop = document.getElementById("back-to-top");
+
+    if (!backToTop) return;
+
+    // Show button after scrolling down
+
+    function toggleBackToTop() {
+        if (window.scrollY > 350) {
+            backToTop.classList.add("is-visible");
+        } else {
+            backToTop.classList.remove("is-visible");
+        }
+    }
+
+    window.addEventListener("scroll", toggleBackToTop, {
+        passive: true
+    });
+
+    // Return smoothly to the top
+
+    backToTop.addEventListener("click", () => {
+
+        const reducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+        window.scrollTo({
+            top: 0,
+            behavior: reducedMotion ? "auto" : "smooth"
+        });
+
+    });
+
+    toggleBackToTop();
+
+});
