@@ -734,3 +734,13 @@ section[id] {
     scroll-margin-top: 100px;
 }
 
+/* GOLDEN NAVBAR LOGO */
+
+.logo {
+    color: #C9A76A !important;
+}
+
+.logo span {
+    color: #C9A76A !important;
+}
+
