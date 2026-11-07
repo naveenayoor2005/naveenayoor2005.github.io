@@ -857,3 +857,23 @@ html.js .reveal.is-visible {
     }
 }
 
+
+/* GOLDEN SCROLL PROGRESS BAR */
+
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        #A98243,
+        #C9A76A,
+        #F0D49B
+    );
+    z-index: 100000;
+    pointer-events: none;
+    transition: width 0.08s linear;
+    box-shadow: 0 0 8px rgba(201, 167, 106, 0.45);
+}
