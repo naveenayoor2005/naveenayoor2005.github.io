@@ -703,3 +703,34 @@ footer {
         text-align: center;
     }
 }
+
+
+
+/* FIXED NAVIGATION BAR */
+
+header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 99999;
+    background: rgba(16, 18, 22, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201, 167, 106, 0.3);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Keep page content below the fixed header */
+
+body {
+    padding-top: 80px;
+}
+
+/* Section links should not hide behind navigation */
+
+section[id] {
+    scroll-margin-top: 100px;
+}
+
