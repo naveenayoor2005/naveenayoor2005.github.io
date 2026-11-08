@@ -1261,3 +1261,156 @@ html.js .reveal.is-visible {
         text-align: center;
     }
 }
+
+/* ======================================
+   PREMIUM ENQUIRY FORM
+====================================== */
+
+.enquiry-form-wrapper {
+    max-width: 850px;
+    margin: 45px auto 0;
+    padding: 35px;
+    background: linear-gradient(145deg, #191C23, #111318);
+    border: 1px solid rgba(201, 167, 106, 0.25);
+    border-radius: 18px;
+}
+
+.enquiry-form-heading {
+    margin-bottom: 28px;
+}
+
+.enquiry-form-heading > p:first-child {
+    color: #C9A76A;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.enquiry-form-heading h3 {
+    color: #FFFFFF;
+    font-size: 27px;
+    margin: 12px 0;
+}
+
+.enquiry-form-heading h3 span {
+    color: #C9A76A;
+}
+
+.enquiry-form-heading > p:last-child {
+    color: #AEB2BA;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.enquiry-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 16px;
+}
+
+.enquiry-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.enquiry-field-full {
+    grid-column: 1 / -1;
+}
+
+.enquiry-field label {
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.enquiry-field input,
+.enquiry-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 15px;
+    background: #101216;
+    border: 1px solid #393D46;
+    border-radius: 9px;
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.enquiry-field input::placeholder,
+.enquiry-field textarea::placeholder {
+    color: #777D88;
+}
+
+.enquiry-field input:focus,
+.enquiry-field textarea:focus {
+    border-color: #C9A76A;
+    box-shadow: 0 0 0 3px rgba(201, 167, 106, 0.10);
+}
+
+.enquiry-field textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+/* Submit button */
+
+.enquiry-submit {
+    width: 100%;
+    padding: 15px 20px;
+    background: #C9A76A;
+    color: #101216;
+    border: none;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.enquiry-submit:hover {
+    background: #E3C58C;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(201, 167, 106, 0.2);
+}
+
+.enquiry-submit span {
+    margin-left: 8px;
+}
+
+/* Spam protection field */
+
+.form-honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Mobile responsive */
+
+@media (max-width: 600px) {
+
+    .enquiry-form-wrapper {
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    .enquiry-form {
+        grid-template-columns: 1fr;
+    }
+
+    .enquiry-field-full {
+        grid-column: auto;
+    }
+
+    .enquiry-form-heading h3 {
+        font-size: 23px;
+    }
+
+}
+
