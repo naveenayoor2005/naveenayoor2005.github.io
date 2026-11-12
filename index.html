@@ -230,7 +230,13 @@
 
                 <div class="project-metric">
                     <span>Total Revenue</span>
-                    <strong>₹3,29,900</strong>
+                    
+<strong class="count-up"
+        data-count="329900"
+        data-count-type="currency">
+    ₹3,29,900
+</strong>
+
                 </div>
 
                 <div class="project-metric">
@@ -240,10 +246,182 @@
 
                 <div class="project-metric">
                     <span>March Revenue</span>
-                    <strong>₹1,44,800</strong>
+                    
+<strong class="count-up"
+        data-count="144800"
+        data-count-type="currency">
+    ₹1,44,800
+</strong>
+
                 </div>
 
             </div>
+
+<!-- INTERACTIVE PROJECT CHARTS -->
+
+<div class="project-charts">
+
+    <!-- MONTHLY REVENUE CHART -->
+    <div class="project-chart-card">
+
+        <div class="chart-heading">
+            <span>REVENUE ANALYTICS</span>
+            <h4>Monthly Revenue</h4>
+            <p>Revenue performance across three months</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="monthlyRevenueChart"
+                    role="img"
+                    aria-label="Monthly revenue chart">
+            </canvas>
+        </div>
+
+    </div>
+
+    <!-- PRODUCT QUANTITY CHART -->
+    <div class="project-chart-card">
+
+        <div class="chart-heading">
+            <span>PRODUCT PERFORMANCE</span>
+            <h4>Product-wise Sales</h4>
+            <p>Quantity sold by product</p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="productQuantityChart"
+                    role="img"
+                    aria-label="Product quantity chart">
+            </canvas>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- BUSINESS INSIGHTS PANEL -->
+
+<div class="business-insights-panel">
+
+    <div class="insights-heading">
+        <span>DATA-DRIVEN FINDINGS</span>
+        <h4>Key Business Insights</h4>
+    </div>
+
+    <div class="insights-grid">
+
+        <div class="insight-card">
+            <span class="insight-icon">▦</span>
+            <p>Total Units Sold</p>
+            <h3 class="count-up" data-count="40">40</h3>
+            <small>Across 4 products</small>
+        </div>
+
+        <div class="insight-card">
+            <span class="insight-icon">✦</span>
+            <p>Top Selling Product</p>
+            <h3>Mouse</h3>
+            <small>
+    <span class="count-up" data-count="23">23</span>
+    units sold
+</small>
+        </div>
+
+        <div class="insight-card">
+            <span class="insight-icon">↗</span>
+            <p>Best Revenue Month</p>
+            <h3>March</h3>
+            <small>₹1,44,800</small>
+        </div>
+
+        <div class="insight-card">
+            <span class="insight-icon">◈</span>
+            <p>March Revenue Share</p>
+            <h3 class="count-up"
+    data-count="43.9"
+    data-count-decimals="1"
+    data-count-suffix="%">
+    43.9%
+</h3>
+            <small>Of total revenue</small>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- PROJECT ANALYSIS AND RECOMMENDATIONS -->
+
+<div class="project-analysis">
+
+    <!-- PROJECT ANALYSIS -->
+
+    <div class="analysis-block">
+
+        <span class="analysis-label">
+            DATA-DRIVEN FINDINGS
+        </span>
+
+        <h4>Project Analysis</h4>
+
+        <p>
+            The analysis evaluated monthly revenue and product-wise
+            sales quantities to understand overall sales performance.
+        </p>
+
+        <ul>
+            <li>
+                March 2026 recorded the highest revenue of ₹1,44,800.
+            </li>
+            <li>
+                February 2026 recorded the lowest revenue of ₹79,000.
+            </li>
+            <li>
+                March contributed approximately 43.9% of total revenue.
+            </li>
+            <li>
+                Mouse was the top-selling product with 23 units sold.
+            </li>
+            <li>
+                Total product quantity sold across the four products was 40 units.
+            </li>
+        </ul>
+
+    </div>
+
+    <!-- BUSINESS RECOMMENDATIONS -->
+
+    <div class="analysis-block recommendation-block">
+
+        <span class="analysis-label">
+            BUSINESS STRATEGY
+        </span>
+
+        <h4>Business Recommendations</h4>
+
+        <ul>
+            <li>
+                Investigate the factors behind March's higher revenue.
+            </li>
+            <li>
+                Monitor mouse inventory based on its sales volume.
+            </li>
+            <li>
+                Compare product prices, costs and profit margins
+                before making product-level decisions.
+            </li>
+            <li>
+                Analyze additional months to identify longer-term
+                sales patterns.
+            </li>
+        </ul>
+
+    </div>
+
+</div>
+
+
+
 
             <div class="project-details">
 
@@ -405,6 +583,13 @@
     ↑
 </button>
 
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- CHART.JS LIBRARY -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+
+<!-- YOUR WEBSITE JAVASCRIPT -->
 <script src="script.js"></script>
 
 </body>

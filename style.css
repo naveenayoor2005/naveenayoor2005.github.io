@@ -1414,3 +1414,491 @@ html.js .reveal.is-visible {
 
 }
 
+
+/* ======================================
+   PREMIUM PROJECT ANALYTICS DASHBOARD
+====================================== */
+
+.project-charts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin: 30px 0;
+}
+
+.project-chart-card {
+    position: relative;
+    min-width: 0;
+    padding: 24px;
+    background: linear-gradient(145deg, #1B2029, #111318);
+    border: 1px solid rgba(201, 167, 106, 0.22);
+    border-radius: 16px;
+    overflow: hidden;
+
+    transition: transform 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+}
+
+.project-chart-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #C9A76A,
+        transparent
+    );
+    transition: left 0.7s ease;
+}
+
+.project-chart-card:hover::before {
+    left: 100%;
+}
+
+.project-chart-card:hover {
+    transform: translateY(-5px);
+    border-color: #C9A76A;
+    box-shadow: 0 12px 30px rgba(201, 167, 106, 0.12);
+}
+
+/* Chart headings */
+
+.chart-heading {
+    margin-bottom: 22px;
+}
+
+.chart-heading > span {
+    color: #C9A76A;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.chart-heading h4 {
+    color: #FFFFFF;
+    font-size: 18px;
+    margin: 9px 0;
+}
+
+.chart-heading p {
+    color: #AEB2BA;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* Chart canvas container */
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 270px;
+}
+
+/* Mobile responsive */
+
+@media (max-width: 700px) {
+
+    .project-charts {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .project-chart-card {
+        padding: 20px;
+    }
+
+    .chart-container {
+        height: 240px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-chart-card,
+    .project-chart-card::before {
+        transition: none;
+    }
+}
+
+/* ======================================
+   PROJECT CHART SCROLL ANIMATION
+====================================== */
+
+.project-chart-card {
+    opacity: 0;
+    transform: translateY(35px) scale(0.98);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.project-chart-card.chart-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.project-chart-card:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-chart-card {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* ======================================
+   PREMIUM BUSINESS INSIGHTS PANEL
+====================================== */
+
+.business-insights-panel {
+    margin: 32px 0;
+    padding: 26px;
+    background: linear-gradient(145deg, #191E27, #111318);
+    border: 1px solid rgba(201, 167, 106, 0.25);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Golden decorative glow */
+
+.business-insights-panel::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 220px;
+    height: 220px;
+    background: rgba(201, 167, 106, 0.08);
+    filter: blur(75px);
+    pointer-events: none;
+}
+
+.insights-heading {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.insights-heading span {
+    color: #C9A76A;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.insights-heading h4 {
+    color: #FFFFFF;
+    font-size: 21px;
+    margin-top: 9px;
+}
+
+/* Insights grid */
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    position: relative;
+}
+
+/* Individual insight cards */
+
+.insight-card {
+    min-width: 0;
+    padding: 19px 15px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(201, 167, 106, 0.16);
+    border-radius: 13px;
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.insight-card:hover {
+    transform: translateY(-6px);
+    background: rgba(201, 167, 106, 0.08);
+    border-color: #C9A76A;
+    box-shadow: 0 10px 25px rgba(201, 167, 106, 0.12);
+}
+
+/* Icons */
+
+.insight-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 15px;
+    border-radius: 9px;
+    background: rgba(201, 167, 106, 0.12);
+    color: #E3C58C;
+    font-size: 19px;
+}
+
+/* Insight text */
+
+.insight-card p {
+    color: #AEB2BA;
+    font-size: 11px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.insight-card h3 {
+    color: #E3C58C;
+    font-size: 21px;
+    margin-bottom: 7px;
+    overflow-wrap: anywhere;
+}
+
+.insight-card small {
+    color: #858D99;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+/* Scroll reveal - activated by JavaScript */
+
+.business-insights-panel.reveal-ready .insight-card {
+    opacity: 0;
+    transform: translateY(24px);
+}
+
+.business-insights-panel.reveal-ready .insight-card.insight-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered animation */
+
+.business-insights-panel.reveal-ready .insight-card:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.business-insights-panel.reveal-ready .insight-card:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.business-insights-panel.reveal-ready .insight-card:nth-child(3) {
+    transition-delay: 0.25s;
+}
+
+.business-insights-panel.reveal-ready .insight-card:nth-child(4) {
+    transition-delay: 0.35s;
+}
+
+/* Mobile responsive */
+
+@media (max-width: 700px) {
+
+    .business-insights-panel {
+        padding: 20px;
+    }
+
+    .insights-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 11px;
+    }
+
+    .insight-card {
+        padding: 15px 12px;
+    }
+
+    .insight-card h3 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 360px) {
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .insight-card {
+        transition: none;
+    }
+}
+
+/* ======================================
+   PROJECT ANALYSIS & RECOMMENDATIONS
+====================================== */
+
+.project-analysis {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.analysis-block {
+    position: relative;
+    min-width: 0;
+    padding: 26px;
+    background: linear-gradient(145deg, #1B2029, #111318);
+    border: 1px solid rgba(201, 167, 106, 0.22);
+    border-radius: 16px;
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+/* Golden glow */
+
+.analysis-block::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 160px;
+    height: 160px;
+    background: rgba(201, 167, 106, 0.07);
+    filter: blur(55px);
+    pointer-events: none;
+}
+
+.analysis-block:hover {
+    transform: translateY(-5px);
+    border-color: #C9A76A;
+    box-shadow: 0 12px 28px rgba(201, 167, 106, 0.10);
+}
+
+/* Headings */
+
+.analysis-label {
+    display: inline-block;
+    color: #C9A76A;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.analysis-block h4 {
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.analysis-block p {
+    color: #AEB2BA;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* Analysis lists */
+
+.analysis-block ul {
+    padding-left: 19px;
+    margin: 0;
+}
+
+.analysis-block li {
+    color: #B9BEC7;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 9px;
+}
+
+.analysis-block li::marker {
+    color: #C9A76A;
+}
+
+/* Recommendation panel */
+
+.recommendation-block {
+    background: linear-gradient(145deg, #201F1B, #111318);
+}
+
+/* Mobile responsive */
+
+@media (max-width: 700px) {
+
+    .project-analysis {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .analysis-block {
+        padding: 21px;
+    }
+
+    .analysis-block h4 {
+        font-size: 18px;
+    }
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .analysis-block {
+        transition: none;
+    }
+}
+
+/* ======================================
+   PROJECT ANALYSIS SCROLL ANIMATION
+====================================== */
+
+.project-analysis.reveal-ready .analysis-block {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.project-analysis.reveal-ready .analysis-block.analysis-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-analysis.reveal-ready .analysis-block:nth-child(2) {
+    transition-delay: 0.18s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-analysis.reveal-ready .analysis-block {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+/* ======================================
+   ANIMATED SALES NUMBER COUNTERS
+====================================== */
+
+.count-up {
+    font-variant-numeric: tabular-nums;
+    display: inline-block;
+    will-change: contents;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .count-up {
+        will-change: auto;
+    }
+}
+
+
