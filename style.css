@@ -2083,6 +2083,433 @@ html.js .reveal.is-visible {
     }
 
 }
+/* ANIMATED SALES NUMBER COUNTERS */
+
+.count-up {
+    font-variant-numeric: tabular-nums;
+    display: inline-block;
+    will-change: contents;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .count-up {
+        will-change: auto;
+    }
+}
+
+/* ======================================
+   PREMIUM SALES DATASET PREVIEW
+====================================== */
+
+.dataset-preview {
+    margin: 32px 0;
+    padding: 26px;
+    background: linear-gradient(145deg, #191E27, #111318);
+    border: 1px solid rgba(201, 167, 106, 0.25);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.dataset-heading {
+    margin-bottom: 24px;
+}
+
+.dataset-heading > span {
+    color: #C9A76A;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.dataset-heading h4 {
+    color: #FFFFFF;
+    font-size: 21px;
+    margin: 10px 0;
+}
+
+.dataset-heading p {
+    color: #AEB2BA;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* Dataset summary cards */
+
+.dataset-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.dataset-summary div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 17px;
+    background: rgba(201, 167, 106, 0.07);
+    border: 1px solid rgba(201, 167, 106, 0.18);
+    border-radius: 11px;
+    transition: transform 0.3s ease,
+                border-color 0.3s ease;
+}
+
+.dataset-summary div:hover {
+    transform: translateY(-4px);
+    border-color: #C9A76A;
+}
+
+.dataset-summary strong {
+    color: #E3C58C;
+    font-size: 22px;
+}
+
+.dataset-summary span {
+    color: #AEB2BA;
+    font-size: 11px;
+}
+
+/* Expandable dataset section */
+
+.dataset-details {
+    border: 1px solid rgba(201, 167, 106, 0.22);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.dataset-details summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 17px 20px;
+    color: #E3C58C;
+    background: rgba(201, 167, 106, 0.07);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+}
+
+.dataset-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.dataset-arrow {
+    font-size: 22px;
+    transition: transform 0.3s ease;
+}
+
+.dataset-details[open] .dataset-arrow {
+    transform: rotate(180deg);
+}
+
+/* Horizontal table scrolling */
+
+.dataset-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #C9A76A #20242C;
+}
+
+.dataset-table {
+    width: 100%;
+    min-width: 680px;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 12px;
+}
+
+.dataset-table th {
+    padding: 15px 13px;
+    color: #E3C58C;
+    background: #202630;
+    border-bottom: 1px solid rgba(201, 167, 106, 0.3);
+    white-space: nowrap;
+}
+
+.dataset-table td {
+    padding: 14px 13px;
+    color: #B9BEC7;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    white-space: nowrap;
+}
+
+.dataset-table tbody tr {
+    transition: background 0.25s ease;
+}
+
+.dataset-table tbody tr:hover {
+    background: rgba(201, 167, 106, 0.09);
+}
+
+.dataset-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Original CSV link */
+
+.dataset-download-link {
+    display: inline-block;
+    margin: 20px;
+    color: #C9A76A;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: color 0.3s ease,
+                transform 0.3s ease;
+}
+
+.dataset-download-link:hover {
+    color: #F0D49B;
+    transform: translateX(4px);
+}
+
+/* Mobile responsive */
+
+@media (max-width: 600px) {
+
+    .dataset-preview {
+        padding: 19px;
+    }
+
+    .dataset-summary {
+        gap: 8px;
+    }
+
+    .dataset-summary div {
+        padding: 12px 9px;
+    }
+
+    .dataset-summary strong {
+        font-size: 18px;
+    }
+
+    .dataset-summary span {
+        font-size: 10px;
+    }
+
+    .dataset-details summary {
+        padding: 15px;
+    }
+
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .dataset-summary div,
+    .dataset-arrow,
+    .dataset-download-link {
+        transition: none;
+    }
+}
+
+/* ======================================
+   PREMIUM DATASET SEARCH BOX
+====================================== */
+
+.dataset-search {
+    padding: 20px;
+    background: rgba(201, 167, 106, 0.045);
+    border-bottom: 1px solid rgba(201, 167, 106, 0.18);
+}
+
+.dataset-search label {
+    display: block;
+    color: #E3C58C;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.dataset-search input {
+    width: 100%;
+    padding: 14px 16px;
+    background: #101216;
+    color: #FFFFFF;
+    border: 1px solid rgba(201, 167, 106, 0.25);
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.dataset-search input::placeholder {
+    color: #777D88;
+}
+
+.dataset-search input:focus {
+    border-color: #C9A76A;
+    box-shadow: 0 0 0 3px rgba(201, 167, 106, 0.10);
+}
+
+.dataset-search p {
+    color: #AEB2BA;
+    font-size: 11px;
+    margin-top: 10px;
+}
+
+.dataset-search p.search-empty {
+    color: #E3C58C;
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .dataset-search input {
+        transition: none;
+    }
+}
+
+/* ======================================
+   DATASET CLEAR SEARCH BUTTON
+====================================== */
+
+.clear-dataset-search {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 9px 16px;
+    background: transparent;
+    color: #C9A76A;
+    border: 1px solid rgba(201, 167, 106, 0.4);
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.clear-dataset-search:hover {
+    background: #C9A76A;
+    color: #101216;
+    transform: translateY(-2px);
+}
+
+.clear-dataset-search:focus-visible {
+    outline: 2px solid #E3C58C;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .clear-dataset-search {
+        transition: none;
+    }
+}
+
+/* ======================================
+   PREMIUM DATASET SORTING DROPDOWN
+====================================== */
+
+.dataset-sort {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.dataset-sort label {
+    color: #E3C58C;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dataset-sort select {
+    min-width: 210px;
+    padding: 11px 14px;
+    background: #101216;
+    color: #FFFFFF;
+    border: 1px solid rgba(201, 167, 106, 0.35);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 12px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.dataset-sort select:focus {
+    border-color: #C9A76A;
+    box-shadow: 0 0 0 3px rgba(201, 167, 106, 0.10);
+}
+
+.dataset-sort select option {
+    background: #191D24;
+    color: #FFFFFF;
+}
+
+/* Mobile responsive */
+
+@media (max-width: 600px) {
+    .dataset-sort {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .dataset-sort select {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .dataset-sort select {
+        transition: none;
+    }
+}
+
+/* ======================================
+   PREMIUM DATASET DOWNLOAD BUTTON
+====================================== */
+
+.download-dataset-btn {
+    display: inline-block;
+    margin: 16px 20px 20px;
+    padding: 12px 19px;
+    background: linear-gradient(135deg, #C9A76A, #E3C58C);
+    color: #101216;
+    border: 1px solid #C9A76A;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+}
+
+.download-dataset-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(201, 167, 106, 0.22);
+    background: #F0D49B;
+}
+
+.download-dataset-btn:focus-visible {
+    outline: 2px solid #E3C58C;
+    outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+    .download-dataset-btn {
+        margin: 14px 12px 18px;
+        width: calc(100% - 24px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .download-dataset-btn {
+        transition: none;
+    }
+}
 
 
 

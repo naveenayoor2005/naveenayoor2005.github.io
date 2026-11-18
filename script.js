@@ -802,4 +802,255 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+/* ======================================
+   INTERACTIVE SALES DATASET SEARCH
+====================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const searchInput = document.getElementById("datasetSearch");
+    const searchStatus = document.getElementById("datasetSearchStatus");
+
+    const tableRows = document.querySelectorAll(
+        ".dataset-table tbody tr"
+    );
+
+    // Stop safely if the dataset elements are missing
+    if (!searchInput || !searchStatus || tableRows.length === 0) {
+        return;
+    }
+
+    const totalRecords = tableRows.length;
+
+    // Search records as the visitor types
+    searchInput.addEventListener("input", () => {
+
+        const searchTerm = searchInput.value
+            .trim()
+            .toLocaleLowerCase();
+
+        let visibleRecords = 0;
+
+        tableRows.forEach(row => {
+
+            const rowText = row.textContent.toLocaleLowerCase();
+
+            const matches = rowText.includes(searchTerm);
+
+            row.hidden = !matches;
+
+            if (matches) {
+                visibleRecords++;
+            }
+
+        });
+
+        // Update search result message
+        if (visibleRecords === 0) {
+
+            searchStatus.textContent = "No matching records found.";
+
+            searchStatus.classList.add("search-empty");
+
+        } else {
+
+            searchStatus.textContent =
+                `Showing ${visibleRecords} of ${totalRecords} records`;
+
+            searchStatus.classList.remove("search-empty");
+
+        }
+
+    });
+
+});
+
+/* ======================================
+   CLEAR DATASET SEARCH
+====================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const searchInput = document.getElementById("datasetSearch");
+    const clearButton = document.getElementById("clearDatasetSearch");
+
+    if (!searchInput || !clearButton) return;
+
+    clearButton.addEventListener("click", () => {
+
+        searchInput.value = "";
+
+        searchInput.dispatchEvent(
+            new Event("input", { bubbles: true })
+        );
+
+        searchInput.focus();
+
+    });
+
+});
+
+
+/* ======================================
+   INTERACTIVE DATASET SORTING
+====================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const sortSelect = document.getElementById("datasetSort");
+
+    const tableBody = document.querySelector(
+        ".dataset-table tbody"
+    );
+
+    if (!sortSelect || !tableBody) return;
+
+    // Store the original order of all dataset records
+    const originalRows = Array.from(tableBody.rows);
+
+    function getCellValue(row, index) {
+        return row.cells[index]?.textContent.trim() || "";
+    }
+
+    sortSelect.addEventListener("change", () => {
+
+        const sortType = sortSelect.value;
+
+        // Start with the original records
+        const sortedRows = [...originalRows];
+
+        switch (sortType) {
+
+            case "date":
+                sortedRows.sort((a, b) =>
+                    Date.parse(getCellValue(b, 1)) -
+                    Date.parse(getCellValue(a, 1))
+                );
+                break;
+
+            case "product":
+                sortedRows.sort((a, b) =>
+                    getCellValue(a, 2).localeCompare(
+                        getCellValue(b, 2),
+                        undefined,
+                        { sensitivity: "base" }
+                    )
+                );
+                break;
+
+            case "quantity":
+                sortedRows.sort((a, b) =>
+                    Number(getCellValue(b, 4)) -
+                    Number(getCellValue(a, 4))
+                );
+                break;
+
+            case "price":
+                sortedRows.sort((a, b) => {
+
+                    const priceA = Number(
+                        getCellValue(a, 5).replace(/[^\d.-]/g, "")
+                    );
+
+                    const priceB = Number(
+                        getCellValue(b, 5).replace(/[^\d.-]/g, "")
+                    );
+
+                    return priceB - priceA;
+                });
+                break;
+
+            case "original":
+            default:
+                // Restore the original CSV order
+                break;
+        }
+
+        // Reorder rows without rebuilding the table
+        const fragment = document.createDocumentFragment();
+
+        sortedRows.forEach(row => {
+            fragment.appendChild(row);
+        });
+
+        tableBody.appendChild(fragment);
+
+    });
+
+});
+
+/* ======================================
+   DOWNLOAD FILTERED SALES DATASET AS CSV
+====================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const downloadButton = document.getElementById("downloadDataset");
+
+    const datasetTable = document.querySelector(".dataset-table");
+
+    if (!downloadButton || !datasetTable) {
+        return;
+    }
+
+    downloadButton.addEventListener("click", () => {
+
+        const headers = Array.from(
+            datasetTable.querySelectorAll("thead th")
+        ).map(cell => cell.textContent.trim());
+
+        // Export only visible rows, in their current sorted order
+        const visibleRows = Array.from(
+            datasetTable.querySelectorAll("tbody tr")
+        ).filter(row => !row.hidden);
+
+        if (visibleRows.length === 0) {
+            alert("There are no records to download.");
+            return;
+        }
+
+        const csvEscape = value => {
+            const text = String(value ?? "");
+            return '"' + text.replace(/"/g, '""') + '"';
+        };
+
+        const csvRows = visibleRows.map(row =>
+            Array.from(row.cells).map(cell =>
+                cell.textContent.trim()
+            )
+        );
+
+        const csvContent = [
+            headers,
+            ...csvRows
+        ]
+            .map(row => row.map(csvEscape).join(","))
+            .join("\r\n");
+
+        // UTF-8 BOM helps Excel display the CSV correctly
+        const blob = new Blob(
+            ["\uFEFF" + csvContent],
+            { type: "text/csv;charset=utf-8;" }
+        );
+
+        const downloadURL = URL.createObjectURL(blob);
+
+        const temporaryLink = document.createElement("a");
+
+        temporaryLink.href = downloadURL;
+        temporaryLink.download = "sales-data-analysis.csv";
+
+        document.body.appendChild(temporaryLink);
+
+        temporaryLink.click();
+
+        temporaryLink.remove();
+
+        setTimeout(() => {
+            URL.revokeObjectURL(downloadURL);
+        }, 1000);
+
+    });
+
+});
 

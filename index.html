@@ -527,6 +527,209 @@
 
 </div>
 
+<!-- SALES DATASET PREVIEW -->
+
+<div class="dataset-preview">
+
+    <div class="dataset-heading">
+        <span>DATA EXPLORATION</span>
+        <h4>Dataset Preview</h4>
+        <p>
+            A sample of the sales records used in this
+            Python data analysis project.
+        </p>
+    </div>
+
+    <div class="dataset-summary">
+        <div>
+            <strong>10</strong>
+            <span>Records</span>
+        </div>
+
+        <div>
+            <strong>6</strong>
+            <span>Columns</span>
+        </div>
+
+        <div>
+            <strong>CSV</strong>
+            <span>File Format</span>
+        </div>
+    </div>
+
+    <details class="dataset-details">
+
+        <summary>
+            View Dataset Records
+            <span class="dataset-arrow">⌄</span>
+        </summary>
+
+<!-- DATASET SEARCH -->
+
+<div class="dataset-search">
+
+    <label for="datasetSearch">
+        Search Sales Records
+    </label>
+
+<input
+    type="search"
+    id="datasetSearch"
+    placeholder="Search ID, product, category or date..."
+    autocomplete="off">
+
+<button
+    type="button"
+    id="clearDatasetSearch"
+    class="clear-dataset-search">
+    Clear Search ↺
+</button>
+
+<!-- DATASET SORTING -->
+
+<div class="dataset-sort">
+
+    <label for="datasetSort">Sort Records:</label>
+
+    <select id="datasetSort">
+        <option value="original">Original Order</option>
+        <option value="date">Date (Newest First)</option>
+        <option value="product">Product (A–Z)</option>
+        <option value="quantity">Quantity (High to Low)</option>
+        <option value="price">Price (High to Low)</option>
+    </select>
+
+</div>
+
+
+<button
+    type="button"
+    id="downloadDataset"
+    class="download-dataset-btn">
+    ↓ Download Dataset CSV
+</button>
+
+<p id="datasetSearchStatus" aria-live="polite">
+    Showing 10 of 10 records
+</p>
+
+</div>
+
+
+        <div class="dataset-table-wrapper">
+
+            <table class="dataset-table">
+
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
+                        <th>Price (₹)</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1001</td>
+                        <td>2026-01-05</td>
+                        <td>Laptop</td>
+                        <td>Electronics</td>
+                        <td>2</td>
+                        <td>50,000</td>
+                    </tr>
+                    <tr>
+                        <td>1002</td>
+                        <td>2026-01-08</td>
+                        <td>Mouse</td>
+                        <td>Accessories</td>
+                        <td>5</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td>1003</td>
+                        <td>2026-01-12</td>
+                        <td>Keyboard</td>
+                        <td>Accessories</td>
+                        <td>3</td>
+                        <td>1,200</td>
+                    </tr>
+                    <tr>
+                        <td>1004</td>
+                        <td>2026-02-02</td>
+                        <td>Monitor</td>
+                        <td>Electronics</td>
+                        <td>2</td>
+                        <td>12,000</td>
+                    </tr>
+                    <tr>
+                        <td>1005</td>
+                        <td>2026-02-10</td>
+                        <td>Laptop</td>
+                        <td>Electronics</td>
+                        <td>1</td>
+                        <td>50,000</td>
+                    </tr>
+                    <tr>
+                        <td>1006</td>
+                        <td>2026-02-15</td>
+                        <td>Mouse</td>
+                        <td>Accessories</td>
+                        <td>10</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td>1007</td>
+                        <td>2026-03-01</td>
+                        <td>Keyboard</td>
+                        <td>Accessories</td>
+                        <td>4</td>
+                        <td>1,200</td>
+                    </tr>
+                    <tr>
+                        <td>1008</td>
+                        <td>2026-03-12</td>
+                        <td>Monitor</td>
+                        <td>Electronics</td>
+                        <td>3</td>
+                        <td>12,000</td>
+                    </tr>
+                    <tr>
+                        <td>1009</td>
+                        <td>2026-03-20</td>
+                        <td>Laptop</td>
+                        <td>Electronics</td>
+                        <td>2</td>
+                        <td>50,000</td>
+                    </tr>
+                    <tr>
+                        <td>1010</td>
+                        <td>2026-03-25</td>
+                        <td>Mouse</td>
+                        <td>Accessories</td>
+                        <td>8</td>
+                        <td>500</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <a
+            class="dataset-download-link"
+            href="https://github.com/naveenayoor2005/Sales-Data-Analysis/blob/main/sales.csv"
+            target="_blank"
+            rel="noopener noreferrer">
+            View Original CSV on GitHub ↗
+        </a>
+
+    </details>
+
+</div>
+
             <a
                 href="https://github.com/naveenayoor2005/Sales-Data-Analysis"
                 target="_blank"
